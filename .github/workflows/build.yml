@@ -9,10 +9,10 @@ on:
     - master
 
 env:
-  PUBLIC_NAME: PriceCheck
-  SOLUTION_NAME: PriceCheck
-  INTERNAL_NAME: PriceCheck
-  RELEASE_DIR: src\PriceCheck\bin\Release\PriceCheck
+  PUBLIC_NAME: SearchOnGarland
+  SOLUTION_NAME: SearchOnGarland
+  INTERNAL_NAME: SearchOnGarland
+  RELEASE_DIR: src\SearchOnGarland\bin\Release\SearchOnGarland
   PERSONAL_PLUGIN_REPO: kalilistic/DalamudPluginRepo
   PR_PLUGIN_REPO: kalilistic/DalamudPlugins
 
