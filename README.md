@@ -13,7 +13,7 @@ A Simple Plugin that I cloned from the Price Check Plugin, it will take the item
 
 **/garlandconfig** or **/sogconfig** to open settings
 
-Shift + Z By Default, Can use this Keybind on Links in Chat
+**Shift + Z** By Default, Can use this Keybind on Links in Chat
 
 ## Thank you to the creator of PriceCheck most of My Plugin is Theirs.
 
