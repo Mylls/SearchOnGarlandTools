@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchOnGarland", "PriceCheck\SearchOnGarland.csproj", "{EBAF1BDC-2509-4504-8A4B-ED9C563FBEB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiTest2", "WikiTest2\WikiTest2.csproj", "{0FBBEBC8-2CA9-4A3B-93C9-7E2F37B3A144}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBAF1BDC-2509-4504-8A4B-ED9C563FBEB6}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{EBAF1BDC-2509-4504-8A4B-ED9C563FBEB6}.Debug|Any CPU.Build.0 = Debug|x64
+		{EBAF1BDC-2509-4504-8A4B-ED9C563FBEB6}.Release|Any CPU.ActiveCfg = Release|x64
+		{EBAF1BDC-2509-4504-8A4B-ED9C563FBEB6}.Release|Any CPU.Build.0 = Release|x64
+		{0FBBEBC8-2CA9-4A3B-93C9-7E2F37B3A144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBBEBC8-2CA9-4A3B-93C9-7E2F37B3A144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBBEBC8-2CA9-4A3B-93C9-7E2F37B3A144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBBEBC8-2CA9-4A3B-93C9-7E2F37B3A144}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C82043B-0D40-4699-89DB-70B1D6666FF2}
+	EndGlobalSection
+EndGlobal

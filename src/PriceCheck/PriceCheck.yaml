@@ -1,0 +1,17 @@
+name: SearchOnGarland
+author: Swonk/kalilistic
+punchline: Quickly Open Selected Item on Garland Tools.
+description: |-
+    To Open on Garland, Right Click an Item and "Open on Garland Tools" or Mouse Over and Press Keybind Set in Config.
+tags:
+    - garland
+    - garlandtools
+    - wiki
+    - info
+    - search
+repo_url: https://github.com/kalilistic/PriceCheck
+icon_url: https://github.com/goatcorp/DalamudPlugins/blob/api4/plugins/PriceCheck/images/icon.png
+image_urls:
+    - https://github.com/goatcorp/DalamudPlugins/blob/api6/plugins/PriceCheck/images/image1.png
+    - https://github.com/goatcorp/DalamudPlugins/blob/api6/plugins/PriceCheck/images/image2.png
+dalamud_api_level: 6
