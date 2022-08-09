@@ -24,7 +24,7 @@ namespace PriceCheck
         /// </summary>
         /// <param name="plugin">PriceCheck plugin.</param>
         public ConfigWindow(PriceCheckPlugin plugin)
-            : base(plugin, "PriceCheck Config")
+            : base(plugin, "Search On Garland Config")
         {
             this.plugin = plugin;
             this.Size = new Vector2(600f, 600f);
@@ -34,7 +34,6 @@ namespace PriceCheck
         private enum Tab
         {
             General,
-            Overlay,
             Chat,
             Toast,
             Keybind,
@@ -52,12 +51,6 @@ namespace PriceCheck
                 case Tab.General:
                 {
                     this.DrawGeneral();
-                    break;
-                }
-
-                case Tab.Overlay:
-                {
-                    this.DrawOverlay();
                     break;
                 }
 
@@ -105,51 +98,45 @@ namespace PriceCheck
 
         private void DrawTabs()
         {
-            if (ImGui.BeginTabBar("PriceCheckSettingsTabBar", ImGuiTabBarFlags.NoTooltip))
+            if (ImGui.BeginTabBar("SearchOnGarlandSettingsTabBar", ImGuiTabBarFlags.NoTooltip))
             {
-                if (ImGui.BeginTabItem(Loc.Localize("General", "General") + "###PriceCheck_General_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("General", "General") + "###SearchOnGarland_General_Tab"))
                 {
                     this.currentTab = Tab.General;
                     ImGui.EndTabItem();
                 }
 
-                if (ImGui.BeginTabItem(Loc.Localize("Overlay", "Overlay") + "###PriceCheck_Overlay_Tab"))
-                {
-                    this.currentTab = Tab.Overlay;
-                    ImGui.EndTabItem();
-                }
-
-                if (ImGui.BeginTabItem(Loc.Localize("Chat", "Chat") + "###PriceCheck_Chat_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("Chat", "Chat") + "###SearchOnGarland_Chat_Tab"))
                 {
                     this.currentTab = Tab.Chat;
                     ImGui.EndTabItem();
                 }
 
-                if (ImGui.BeginTabItem(Loc.Localize("Toast", "Toast") + "###PriceCheck_Toast_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("Toast", "Toast") + "###SearchOnGarland_Toast_Tab"))
                 {
                     this.currentTab = Tab.Toast;
                     ImGui.EndTabItem();
                 }
 
-                if (ImGui.BeginTabItem(Loc.Localize("Keybind", "Keybind") + "###PriceCheck_Keybind_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("Keybind", "Keybind") + "###SearchOnGarland_Keybind_Tab"))
                 {
                     this.currentTab = Tab.Keybind;
                     ImGui.EndTabItem();
                 }
 
-                if (ImGui.BeginTabItem(Loc.Localize("Filters", "Filters") + "###PriceCheck_Filters_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("Filters", "Filters") + "###SearchOnGarland_Filters_Tab"))
                 {
                     this.currentTab = Tab.Filters;
                     ImGui.EndTabItem();
                 }
 
-                if (ImGui.BeginTabItem(Loc.Localize("Thresholds", "Thresholds") + "###PriceCheck_Thresholds_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("Thresholds", "Thresholds") + "###SearchOnGarland_Thresholds_Tab"))
                 {
                     this.currentTab = Tab.Thresholds;
                     ImGui.EndTabItem();
                 }
 
-                if (ImGui.BeginTabItem(Loc.Localize("ContextMenu", "Context Menu") + "###PriceCheck_ContextMenu_Tab"))
+                if (ImGui.BeginTabItem(Loc.Localize("ContextMenu", "Context Menu") + "###SearchOnGarland_ContextMenu_Tab"))
                 {
                     this.currentTab = Tab.ContextMenu;
                     ImGui.EndTabItem();
@@ -164,7 +151,7 @@ namespace PriceCheck
         {
             var enabled = this.plugin.Configuration.Enabled;
             if (ImGui.Checkbox(
-                Loc.Localize("PluginEnabled", "Plugin enabled") + "###PriceCheck_PluginEnabled_Checkbox",
+                Loc.Localize("PluginEnabled", "Plugin enabled") + "###SearchOnGarland_PluginEnabled_Checkbox",
                 ref enabled))
             {
                 this.plugin.Configuration.Enabled = enabled;
@@ -175,22 +162,9 @@ namespace PriceCheck
                 "PluginEnabled_HelpMarker",
                 "toggle the plugin on/off"));
 
-            var showPrices = this.plugin.Configuration.ShowPrices;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowPrices", "Show prices") + "###PriceCheck_ShowPrices_Checkbox",
-                ref showPrices))
-            {
-                this.plugin.Configuration.ShowPrices = showPrices;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                "ShowPrices_HelpMarker",
-                "show price or just show advice"));
-
             var allowKeybindAfterHover = this.plugin.Configuration.AllowKeybindAfterHover;
             if (ImGui.Checkbox(
-                Loc.Localize("AllowKeybindAfterHover", "Allow keybind to be pressed after hovering over item") + "###PriceCheck_AllowKeybindAfterHover_Checkbox",
+                Loc.Localize("AllowKeybindAfterHover", "Allow keybind to be pressed after hovering over item") + "###SearchOnGarland_AllowKeybindAfterHover_Checkbox",
                 ref allowKeybindAfterHover))
             {
                 this.plugin.Configuration.AllowKeybindAfterHover = allowKeybindAfterHover;
@@ -207,7 +181,7 @@ namespace PriceCheck
                 "HoverDelay_HelpMarker",
                 "delay (in seconds) before processing after hovering"));
             var hoverDelay = this.plugin.Configuration.HoverDelay;
-            if (ImGui.SliderInt("###PriceCheck_HoverDelay_Slider", ref hoverDelay, 0, 10))
+            if (ImGui.SliderInt("###SearchOnGarland_HoverDelay_Slider", ref hoverDelay, 0, 10))
             {
                 this.plugin.Configuration.HoverDelay = hoverDelay;
                 this.plugin.SaveConfig();
@@ -234,199 +208,6 @@ namespace PriceCheck
             ImGui.PopStyleColor();
 
             ImGui.Spacing();
-        }
-
-        private void DrawOverlay()
-        {
-            ImGui.TextColored(ImGuiColors.DalamudViolet, Loc.Localize("DisplayHeading", "Display"));
-            ImGui.Spacing();
-
-            var showOverlay = this.plugin.Configuration.ShowOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowOverlay", "Show overlay") + "###PriceCheck_ShowOverlay_Checkbox",
-                ref showOverlay))
-            {
-                this.plugin.Configuration.ShowOverlay = showOverlay;
-                this.plugin.WindowManager.MainWindow!.IsOpen = showOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                "ShowOverlay_HelpMarker",
-                "show price check results in overlay window"));
-
-            var showOverlayOnLogin = this.plugin.Configuration.ShowOverlayOnLogin;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowOverlayOnLogin", "Show overlay on login") + "###PriceCheck_ShowOverlayOnLogin_Checkbox",
-                ref showOverlayOnLogin))
-            {
-                this.plugin.Configuration.ShowOverlayOnLogin = showOverlayOnLogin;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowOverlayOnLogin_HelpMarker",
-                                           "show overlay window on login"));
-
-            var showOverlayByKeybind = this.plugin.Configuration.ShowOverlayByKeybind;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowOverlayByKeybind", "Show overlay by keybind") + "###PriceCheck_ShowOverlayByKeybind_Checkbox",
-                ref showOverlayByKeybind))
-            {
-                this.plugin.Configuration.ShowOverlayByKeybind = showOverlayByKeybind;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowOverlayByKeybind_HelpMarker",
-                                           "show overlay window when keybind is being held"));
-
-            ImGui.TextColored(ImGuiColors.DalamudViolet, Loc.Localize("StyleHeading", "Style"));
-            ImGui.Spacing();
-
-            var useOverlayColors = this.plugin.Configuration.UseOverlayColors;
-            if (ImGui.Checkbox(
-                Loc.Localize("UseOverlayColors", "Use overlay colors") + "###PriceCheck_UseOverlayColors_Checkbox",
-                ref useOverlayColors))
-            {
-                this.plugin.Configuration.UseOverlayColors = useOverlayColors;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                "UseOverlayColors_HelpMarker",
-                "use different colors for overlay based on result"));
-
-            ImGui.Spacing();
-            ImGui.Text(Loc.Localize("MaxItems", "Max items"));
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                "MaxItems_HelpMarker",
-                "set max number of items in overlay at a time"));
-            var maxItemsInOverlay = this.plugin.Configuration.MaxItemsInOverlay;
-            if (ImGui.SliderInt("###PriceCheck_MaxItems_Slider", ref maxItemsInOverlay, 1, 30))
-            {
-                this.plugin.Configuration.MaxItemsInOverlay = maxItemsInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGui.Spacing();
-            ImGui.Text(Loc.Localize("HideOverlayTimer", "Hide overlay timer"));
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "HideOverlayTimer_HelpMarker",
-                                           "hide overlay after x amount of seconds since last price check - you can this by setting to zero."));
-            var hideOverlayTimer = this.plugin.Configuration.HideOverlayElapsed.FromMillisecondsToSeconds();
-            if (ImGui.SliderInt("###PriceCheck_HideOverlay_Slider", ref hideOverlayTimer, 0, 300))
-            {
-                this.plugin.Configuration.HideOverlayElapsed = hideOverlayTimer.FromSecondsToMilliseconds();
-                this.plugin.SaveConfig();
-            }
-
-            ImGui.Spacing();
-            ImGui.TextColored(ImGuiColors.DalamudViolet, Loc.Localize("FiltersHeading", "Filters"));
-            ImGui.Spacing();
-            var showSuccessInOverlay = this.plugin.Configuration.ShowSuccessInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowSuccessInOverlay", "Show successful price check") + "###PriceCheck_ShowSuccessInOverlay_Checkbox",
-                ref showSuccessInOverlay))
-            {
-                this.plugin.Configuration.ShowSuccessInOverlay = showSuccessInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowSuccessInOverlay_HelpMarker",
-                                           "show successful price check"));
-
-            var showFailedToProcessInOverlay = this.plugin.Configuration.ShowFailedToProcessInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowFailedToProcessInOverlay", "Show failed to process error") + "###PriceCheck_ShowFailedToProcessInOverlay_Checkbox",
-                ref showFailedToProcessInOverlay))
-            {
-                this.plugin.Configuration.ShowFailedToProcessInOverlay = showFailedToProcessInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowFailedToProcessInOverlay_HelpMarker",
-                                           "show error where something went wrong unexpectedly"));
-
-            var showFailedToGetDataInOverlay = this.plugin.Configuration.ShowFailedToGetDataInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowFailedToGetDataInOverlay", "Show failed to get data error") + "###PriceCheck_ShowFailedToGetDataInOverlay_Checkbox",
-                ref showFailedToGetDataInOverlay))
-            {
-                this.plugin.Configuration.ShowFailedToGetDataInOverlay = showFailedToGetDataInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowFailedToGetDataInOverlay_HelpMarker",
-                                           "show error where the plugin couldn't connect to universalis to get the data - usually a problem with your connection or universalis is down"));
-
-            var showNoDataAvailableInOverlay = this.plugin.Configuration.ShowNoDataAvailableInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowNoDataAvailableInOverlay", "Show no data available warning") + "###PriceCheck_ShowNoDataAvailableInOverlay_Checkbox",
-                ref showNoDataAvailableInOverlay))
-            {
-                this.plugin.Configuration.ShowNoDataAvailableInOverlay = showNoDataAvailableInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowNoDataAvailableInOverlay_HelpMarker",
-                                           "show warning where there was no data from universalis available for the item"));
-
-            var showNoRecentDataAvailableInOverlay = this.plugin.Configuration.ShowNoRecentDataAvailableInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowNoRecentDataAvailableInOverlay", "Show no recent data available warning") + "###PriceCheck_ShowNoRecentDataAvailableInOverlay_Checkbox",
-                ref showNoRecentDataAvailableInOverlay))
-            {
-                this.plugin.Configuration.ShowNoRecentDataAvailableInOverlay = showNoRecentDataAvailableInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowNoRecentDataAvailableInOverlay_HelpMarker",
-                                           "show warning where there was no recent data from universalis available for the item within your threshold"));
-
-            var showBelowVendorInOverlay = this.plugin.Configuration.ShowBelowVendorInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowBelowVendorInOverlay", "Show cheaper than vendor price warning") + "###PriceCheck_ShowBelowVendorInOverlay_Checkbox",
-                ref showBelowVendorInOverlay))
-            {
-                this.plugin.Configuration.ShowBelowVendorInOverlay = showBelowVendorInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowBelowVendorInOverlay_HelpMarker",
-                                           "show warning that the market price is cheaper than what you can sell it to a vendor for"));
-
-            var showBelowMinimumInOverlay = this.plugin.Configuration.ShowBelowMinimumInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowBelowMinimumInOverlay", "Show cheaper than minimum threshold warning") + "###PriceCheck_ShowBelowMinimumInOverlay_Checkbox",
-                ref showBelowMinimumInOverlay))
-            {
-                this.plugin.Configuration.ShowBelowMinimumInOverlay = showBelowMinimumInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowBelowMinimumInOverlay_HelpMarker",
-                                           "show warning the price is below your minimum threshold"));
-
-            var showUnmarketableInOverlay = this.plugin.Configuration.ShowUnmarketableInOverlay;
-            if (ImGui.Checkbox(
-                Loc.Localize("ShowUnmarketableInOverlay", "Show unmarketable warning") + "###PriceCheck_ShowUnmarketableInOverlay_Checkbox",
-                ref showUnmarketableInOverlay))
-            {
-                this.plugin.Configuration.ShowUnmarketableInOverlay = showUnmarketableInOverlay;
-                this.plugin.SaveConfig();
-            }
-
-            ImGuiComponents.HelpMarker(Loc.Localize(
-                                           "ShowUnmarketableInOverlay_HelpMarker",
-                                           "show warning that the item can't be sold on the market board"));
         }
 
         private void DrawChat()

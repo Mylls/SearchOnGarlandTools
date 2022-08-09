@@ -10,8 +10,7 @@ tags:
     - info
     - search
 repo_url: https://github.com/Mylls/SearchOnGarlandTools
-icon_url: https://github.com/goatcorp/DalamudPlugins/blob/api4/plugins/PriceCheck/images/icon.png
+icon_url: https://github.com/Mylls/SearchOnGarlandTools/assets/icon.png
 image_urls:
-    - https://github.com/goatcorp/DalamudPlugins/blob/api6/plugins/PriceCheck/images/image1.png
-    - https://github.com/goatcorp/DalamudPlugins/blob/api6/plugins/PriceCheck/images/image2.png
+    - https://github.com/Mylls/SearchOnGarlandTools/assets/GarlandLogo-2287037784.png
 dalamud_api_level: 6
