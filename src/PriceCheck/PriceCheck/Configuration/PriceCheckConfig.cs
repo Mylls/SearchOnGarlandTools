@@ -53,17 +53,17 @@ namespace PriceCheck
         /// <summary>
         /// Gets or sets a value for the hover delay before price check is triggered.
         /// </summary>
-        public int HoverDelay { get; set; } = 1;
+        public int HoverDelay { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show overlay.
         /// </summary>
-        public bool ShowOverlay { get; set; } = true;
+        public bool ShowOverlay { get; set; } = false;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show overlay on login.
         /// </summary>
-        public bool ShowOverlayOnLogin { get; set; } = true;
+        public bool ShowOverlayOnLogin { get; set; } = false;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show overlay on login.

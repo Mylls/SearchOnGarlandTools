@@ -242,7 +242,7 @@ namespace PriceCheck
                 case ItemResult.Success:
                     pricedItem.Message = this.plugin.Configuration.ShowPrices
                                              ? pricedItem.MarketPrice.ToString("N0", CultureInfo.InvariantCulture)
-                                             : Loc.Localize("OpenedGarlandTools", "Opened Garland Tools");
+                                             : Loc.Localize("Success", "Opened Garland Tools");
                     pricedItem.OverlayColor = ImGuiColors.HealerGreen;
                     pricedItem.ChatColor = 45;
                     break;
