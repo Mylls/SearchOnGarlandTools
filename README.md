@@ -13,6 +13,8 @@ A Simple Plugin that I cloned from the Price Check Plugin, it will take the item
 
 **/garlandconfig** or **/sogconfig** to open settings
 
+Shift + Z By Default, Can use this Keybind on Links in Chat
+
 ## Thank you to the creator of PriceCheck most of My Plugin is Theirs.
 
 # PriceCheck [![Build](https://github.com/kalilistic/PriceCheck/actions/workflows/build.yml/badge.svg)](https://github.com/kalilistic/PriceCheck/actions/workflows/build.yml) [![Download count](https://img.shields.io/endpoint?url=https%3A%2F%2Fvz32sgcoal.execute-api.us-east-1.amazonaws.com%2FPriceCheck)](https://github.com/kalilistic/pricecheck) [![Crowdin](https://badges.crowdin.net/pricecheck/localized.svg)](https://crowdin.com/project/pricecheck)
